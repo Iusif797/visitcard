@@ -1,0 +1,299 @@
+/* Обнуление стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Добавление красивого шрифта */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Анимированный градиент для фона */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(270deg, #ff7e5f, #feb47b);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Начало контента сверху */
+    min-height: 100vh;
+    padding: 20px 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* Анимация градиента */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Стили карточки */
+.card {
+    background-color: rgba(30, 30, 30, 0.9); /* Темный фон карточки */
+    color: #f0f0f0;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* Логотип (изображение пользователя) */
+.logo img {
+    width: 120px; /* Фиксированная ширина */
+    height: 120px; /* Фиксированная высота */
+    border-radius: 50%; /* Круглая форма */
+    object-fit: cover; /* Обрезаем изображение, чтобы оно заполнило круг */
+    margin-bottom: 20px;
+}
+
+/* Заголовок */
+h1 {
+    font-size: 1.7em;
+    color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+/* Языковые переключатели */
+.languages {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.language {
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.language:hover {
+    transform: scale(1.1);
+}
+
+/* Флаги */
+.flag-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Текст */
+p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* Контакты */
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-btn {
+    background-color: #444;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Цветные кнопки контактов */
+.contact-phone {
+    background-color: #28a745;
+}
+
+.contact-whatsapp {
+    background-color: #25D366;
+}
+
+.contact-telegram {
+    background-color: #0088cc;
+}
+
+.contact-instagram {
+    background-color: #E1306C;
+}
+
+.contact-messenger {
+    background-color: #0078FF;
+}
+
+.contact-website {
+    background-color: #34495e;
+}
+
+.contact-save {
+    background-color: #8e44ad;
+}
+
+/* Иконки */
+.icon-img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.icon-img-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* Поле для сообщения */
+.message-form {
+    margin-top: 20px;
+}
+
+.message-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #444;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    resize: none;
+    height: 80px;
+    font-style: italic;
+}
+
+.send-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.send-buttons button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #444;
+    transition: background-color 0.3s ease;
+}
+
+.send-buttons button img {
+    width: 24px;
+    height: 24px;
+}
+
+.send-buttons button:hover {
+    background-color: #555;
+}
+
+/* Всплывающее окно */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+    display: none;
+}
+
+#close-popup {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#close-popup:hover {
+    background-color: #555;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .contact-btn {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    .logo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 1.4em;
+    }
+
+    .flag-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .message-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .send-buttons button img {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .contact-btn {
+        font-size: 1.1em;
+    }
+
+    .message-form textarea {
+        font-size: 1rem;
+    }
+}

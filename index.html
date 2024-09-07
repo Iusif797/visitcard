@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iusif Mamedov - Визитка</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="card">
+    <div class="logo">
+        <img src="img/Yusif7.jpg" alt="Iusif Mamedov Logo" class="logo-img">
+    </div>
+    <h1 id="name-title">Iusif Mamedov</h1>
+    <div class="languages">
+        <span class="language" data-lang="ru">
+            <img src="img/RU.jpg" alt="Russian Flag" class="flag-img">
+            RU
+        </span>
+        <span class="language" data-lang="en">
+            <img src="img/EN.jpg" alt="English Flag" class="flag-img">
+            EN
+        </span>
+        <span class="language" data-lang="he">
+            <img src="img/HE.jpg" alt="Hebrew Flag" class="flag-img">
+            Heb
+        </span>
+    </div>
+    <p id="intro-text">Меня зовут Iusif. Я доступен через следующие каналы:</p>
+    <div class="contacts">
+        <a href="tel:+972528057734" class="contact-btn contact-phone">
+            📞 <span id="phone-text">Телефонный звонок</span>
+        </a>
+        <a href="https://wa.me/972528057734" class="contact-btn contact-whatsapp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" class="icon-img">
+            <span id="whatsapp-text">WhatsApp</span>
+        </a>
+        <a href="https://t.me/beckerman979" class="contact-btn contact-telegram">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo" class="icon-img">
+            <span id="telegram-text">Телеграм</span>
+        </a>
+        <a href="https://www.instagram.com/dj_beckerman/" class="contact-btn contact-instagram">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" class="icon-img">
+            <span id="instagram-text">Инстаграм</span>
+        </a>
+        <a href="https://m.me/yusif.memmedov.9" class="contact-btn contact-messenger">
+            <img src="img/facebook.jpg" alt="Facebook Logo" class="icon-img-circle">
+            <span id="messenger-text">Фейсбук Мессенджер</span>
+        </a>
+        <a href="https://webportfolio797.netlify.app/" class="contact-btn contact-website">
+            🌐 <span id="website-text">Вебсайт и Портфолио</span>
+        </a>
+        <a href="iusif_contact.vcf" id="save-contact" download class="contact-btn contact-save">
+            💾 <span id="save-text">Сохранить контакт</span>
+        </a>
+    </div>
+    <div class="description">
+        <p id="description-text">Веб-разработчик сайтов, веб-приложений, QA Engineer</p>
+    </div>
+
+    <!-- Поле для отправки сообщения -->
+    <div class="message-form">
+        <textarea id="message" placeholder="Введите ваше сообщение"></textarea>
+        <div class="send-buttons">
+            <button id="send-whatsapp">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" class="icon-img">
+            </button>
+            <button id="send-telegram">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo" class="icon-img">
+            </button>
+        </div>
+    </div>
+
+    <!-- Всплывающее окно -->
+    <div id="message-popup" class="popup hidden">
+        <p id="popup-text"></p>
+        <button id="close-popup">OK</button>
+    </div>
+</div>
+
+<script>
+    const languageData = {
+        ru: {
+            name: "Iusif Mamedov",
+            intro: "Меня зовут Iusif. Я доступен через следующие каналы:",
+            phone: "Телефонный звонок",
+            whatsapp: "WhatsApp",
+            telegram: "Телеграм",
+            instagram: "Инстаграм",
+            messenger: "Фейсбук Мессенджер",
+            website: "Вебсайт и Портфолио",
+            save: "Сохранить контакт",
+            description: "Веб-разработчик сайтов, веб-приложений, QA Engineer",
+            placeholder: "Введите ваше сообщение",
+            messageSent: "Сообщение отправлено!"
+        },
+        en: {
+            name: "Iusif Mamedov",
+            intro: "My name is Iusif. I'm available on the following channels:",
+            phone: "Phone Call",
+            whatsapp: "WhatsApp",
+            telegram: "Telegram",
+            instagram: "Instagram",
+            messenger: "Facebook Messenger",
+            website: "Website and Portfolio",
+            save: "Save Contact",
+            description: "Web Developer, Web Applications, QA Engineer",
+            placeholder: "Enter your message",
+            messageSent: "Message Sent!"
+        },
+        he: {
+            name: "יוסיף ממדוב",
+            intro: "שמי יוסיף. אני זמין בערוצים הבאים:",
+            phone: "שיחת טלפון",
+            whatsapp: "וואטסאפ",
+            telegram: "טלגרם",
+            instagram: "אינסטגרם",
+            messenger: "מסנג'ר פייסבוק",
+            website: "אתר ופורטפוליו",
+            save: "שמור איש קשר",
+            description: "מפתח אתרים, יישומי אינטרנט, QA Engineer",
+            placeholder: "הזן את ההודעה שלך",
+            messageSent: "ההודעה נשלחה!"
+        }
+    };
+
+    let currentLang = 'ru'; // По умолчанию русский язык
+
+    function switchLanguage(lang) {
+        currentLang = lang;
+        const langData = languageData[lang];
+        document.getElementById('name-title').textContent = langData.name;
+        document.getElementById('intro-text').textContent = langData.intro;
+        document.getElementById('phone-text').textContent = langData.phone;
+        document.getElementById('whatsapp-text').textContent = langData.whatsapp;
+        document.getElementById('telegram-text').textContent = langData.telegram;
+        document.getElementById('instagram-text').textContent = langData.instagram;
+        document.getElementById('messenger-text').textContent = langData.messenger;
+        document.getElementById('website-text').textContent = langData.website;
+        document.getElementById('save-text').textContent = langData.save;
+        document.getElementById('description-text').textContent = langData.description;
+        document.getElementById('message').placeholder = langData.placeholder; // Изменение плейсхолдера
+    }
+
+    document.querySelectorAll('.language').forEach(languageBtn => {
+        languageBtn.addEventListener('click', () => {
+            const selectedLang = languageBtn.dataset.lang;
+            switchLanguage(selectedLang);
+        });
+    });
+
+    function showPopup() {
+        const popup = document.getElementById('message-popup');
+        const popupText = document.getElementById('popup-text');
+        popupText.textContent = languageData[currentLang].messageSent;
+        popup.classList.remove('hidden');
+    }
+
+    document.getElementById('send-whatsapp').addEventListener('click', () => {
+        const message = document.getElementById('message').value.trim(); // Получаем текст из поля
+        if (message.length > 0) {
+            const encodedMessage = encodeURIComponent(message); // Кодируем текст для URL
+            const whatsappURL = `https://wa.me/972528057734?text=${encodedMessage}`; // Формируем ссылку для отправки сообщения
+            window.open(whatsappURL, '_blank'); // Открываем WhatsApp в новом окне
+        } else {
+            alert('Пожалуйста, введите сообщение перед отправкой.');
+        }
+    });
+
+    document.getElementById('send-telegram').addEventListener('click', () => {
+        const message = document.getElementById('message').value.trim(); // Получаем текст из поля
+        if (message.length > 0) {
+            const encodedMessage = encodeURIComponent(message); // Кодируем текст для URL
+            const telegramURL = `https://t.me/beckerman979?text=${encodedMessage}`; // Формируем ссылку для отправки сообщения
+            window.open(telegramURL, '_blank'); // Открываем Telegram в новом окне
+        } else {
+            alert('Пожалуйста, введите сообщение перед отправкой.');
+        }
+    });
+
+    document.getElementById('close-popup').addEventListener('click', () => {
+        document.getElementById('message-popup').classList.add('hidden');
+    });
+</script>
+</body>
+</html>
